@@ -308,7 +308,7 @@ section[id*="epilogue"] {
   text-align: center;
   max-width: 36em;
   margin: 0 auto;
-  padding: 6rem 1.5rem 4rem;
+  padding: 6rem 1.5rem 0;
 }
 
 .landing h1 {

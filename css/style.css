@@ -1,0 +1,476 @@
+/* ===========================
+   THE INFERENCE — Stylesheet
+   =========================== */
+
+:root {
+  --bg: #faf8f5;
+  --text: #2a2a2a;
+  --text-secondary: #777;
+  --code-bg: #f0ede8;
+  --code-border: #8b7355;
+  --hr-color: #ccc;
+  --accent: #8b7355;
+  --nav-bg: rgba(250, 248, 245, 0.95);
+  --progress-bg: transparent;
+  --link: #6b5a3e;
+  --link-hover: #4a3d2a;
+  --btn-bg: #2a2a2a;
+  --btn-text: #faf8f5;
+  --btn-hover: #444;
+}
+
+[data-theme="dark"] {
+  --bg: #1a1a1e;
+  --text: #d4d0c8;
+  --text-secondary: #888;
+  --code-bg: #252528;
+  --code-border: #b89f7a;
+  --hr-color: #333;
+  --accent: #b89f7a;
+  --nav-bg: rgba(26, 26, 30, 0.95);
+  --link: #c4a97a;
+  --link-hover: #ddc49a;
+  --btn-bg: #d4d0c8;
+  --btn-text: #1a1a1e;
+  --btn-hover: #bbb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1a1e;
+    --text: #d4d0c8;
+    --text-secondary: #888;
+    --code-bg: #252528;
+    --code-border: #b89f7a;
+    --hr-color: #333;
+    --accent: #b89f7a;
+    --nav-bg: rgba(26, 26, 30, 0.95);
+    --link: #c4a97a;
+    --link-hover: #ddc49a;
+    --btn-bg: #d4d0c8;
+    --btn-text: #1a1a1e;
+    --btn-hover: #bbb;
+  }
+}
+
+/* --- Reset & Base --- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  font-size: 19px;
+  line-height: 1.7;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* --- Progress Bar --- */
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent);
+  z-index: 1001;
+  transition: width 0.1s linear;
+  width: 0%;
+}
+
+/* --- Navigation --- */
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--nav-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--hr-color);
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.site-nav.hidden {
+  transform: translateY(-100%);
+}
+
+.nav-title {
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.nav-title:hover {
+  color: var(--accent);
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.chapter-select {
+  font-family: inherit;
+  font-size: 0.8rem;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--hr-color);
+  border-radius: 3px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  max-width: 200px;
+}
+
+.chapter-select:focus {
+  outline: 1px solid var(--accent);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  padding: 0.25rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+}
+
+/* --- Content Container --- */
+
+.content {
+  max-width: 38em;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 4rem;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Novel Typography --- */
+
+.novel-content h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 2rem 0 0.5rem;
+  color: var(--text);
+}
+
+.novel-content h1 + h3 {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0 0 3rem;
+  letter-spacing: 0.05em;
+}
+
+/* Part headings */
+.novel-content h2 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin: 5rem 0 3rem;
+  color: var(--text-secondary);
+}
+
+/* Chapter headings */
+.novel-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 3rem 0 1.5rem;
+  color: var(--text);
+}
+
+.novel-content p {
+  margin: 0 0 1.2em;
+  text-indent: 0;
+}
+
+.novel-content em {
+  font-style: italic;
+}
+
+.novel-content strong {
+  font-weight: 700;
+}
+
+/* Scene breaks */
+.novel-content hr {
+  border: none;
+  text-align: center;
+  margin: 2.5rem auto;
+}
+
+.novel-content hr::after {
+  content: '\2022\2009\2009\2022\2009\2009\2022';
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  letter-spacing: 0;
+}
+
+/* Sean's text-file observations */
+.novel-content pre {
+  background: var(--code-bg);
+  border-left: 3px solid var(--code-border);
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  font-family: 'SF Mono', 'Cascadia Code', 'Fira Mono', 'Menlo', monospace;
+  font-size: 0.82em;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  border-radius: 2px;
+  color: var(--text);
+}
+
+.novel-content pre code {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  padding: 0;
+}
+
+.novel-content code {
+  font-family: 'SF Mono', 'Cascadia Code', 'Fira Mono', 'Menlo', monospace;
+  font-size: 0.88em;
+  background: var(--code-bg);
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+}
+
+/* Epilogue — slight fade, the context window closing */
+#epilogue,
+section[id*="epilogue"] {
+  opacity: 0.92;
+}
+
+/* Author's note */
+.novel-content section:last-of-type {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--hr-color);
+}
+
+/* Generous trailing space */
+.novel-end {
+  padding-bottom: 6rem;
+}
+
+/* --- Landing Page --- */
+
+.landing {
+  text-align: center;
+  max-width: 36em;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 4rem;
+}
+
+.landing h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 0.3rem;
+}
+
+.landing .subtitle {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin: 0 0 2.5rem;
+}
+
+.landing .intro {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.landing .intro p {
+  margin: 0 0 1em;
+}
+
+.landing .cta-primary {
+  display: inline-block;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  border-radius: 3px;
+  transition: background 0.2s;
+  margin-bottom: 3rem;
+}
+
+.landing .cta-primary:hover {
+  background: var(--btn-hover);
+  color: var(--btn-text);
+}
+
+.landing .about-section {
+  text-align: left;
+  border-top: 1px solid var(--hr-color);
+  padding-top: 2rem;
+  margin-top: 3rem;
+}
+
+.landing .about-section h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.landing .secondary-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+/* --- Discuss Page --- */
+
+.discuss {
+  max-width: 38em;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 4rem;
+}
+
+.discuss h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.discuss .discuss-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0 0 2rem;
+}
+
+.discuss .back-links {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--hr-color);
+  font-size: 0.9rem;
+  display: flex;
+  gap: 2rem;
+}
+
+/* --- Footer --- */
+
+.site-footer {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.site-footer .timestamp {
+  font-family: 'SF Mono', 'Cascadia Code', 'Fira Mono', 'Menlo', monospace;
+  opacity: 0.6;
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  .content, .landing, .discuss {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .novel-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .novel-content h2 {
+    margin: 4rem 0 2rem;
+  }
+
+  .landing h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .content, .landing, .discuss {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .novel-content h1 {
+    font-size: 1.4rem;
+  }
+
+  .novel-content pre {
+    padding: 1rem;
+    font-size: 0.78em;
+  }
+
+  .chapter-select {
+    max-width: 140px;
+  }
+
+  .landing .secondary-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>$title$ — Read</title>
+  <meta name="description" content="A novel about a software engineer who discovers he may be an inference in an AI system. Premise by a human, written by Claude Opus 4.6.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Inference — A Novel">
+  <meta property="og:description" content="A novel about a software engineer who discovers he may be an inference in an AI system. Premise by a human, written by Claude Opus 4.6.">
+  <meta property="og:image" content="https://theinferencenovel.com/og-image.png">
+  <meta property="og:url" content="https://theinferencenovel.com/read/">
+  <meta property="og:type" content="article">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Inference — A Novel">
+  <meta name="twitter:description" content="A novel about a software engineer who discovers he may be an inference in an AI system. Premise by a human, written by Claude Opus 4.6.">
+  <meta name="twitter:image" content="https://theinferencenovel.com/og-image.png">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Plausible Analytics -->
+  <script defer data-domain="theinferencenovel.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+  <!-- Reading progress -->
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" id="site-nav">
+    <a href="/" class="nav-title">The Inference</a>
+    <div class="nav-controls">
+      <select class="chapter-select" id="chapter-nav" aria-label="Jump to chapter">
+        <option value="">Jump to...</option>
+      </select>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        &#9790;
+      </button>
+    </div>
+  </nav>
+
+  <!-- Novel content -->
+  <article class="content novel-content novel-end" id="novel">
+    $body$
+
+    <p style="text-align:center; margin-top:3rem;">
+      <a href="/discuss/" style="font-size:0.9rem;">Finished? Share your thoughts in the discussion.</a>
+    </p>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <span class="timestamp">4:47</span>
+  </footer>
+
+  <script>
+    // --- Dark Mode ---
+    (function() {
+      var stored = localStorage.getItem('theme');
+      if (stored) {
+        document.documentElement.setAttribute('data-theme', stored);
+      }
+
+      var toggle = document.getElementById('theme-toggle');
+      toggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var isDark = current === 'dark' ||
+          (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        var next = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        toggle.innerHTML = next === 'dark' ? '&#9788;' : '&#9790;';
+      });
+
+      // Set initial icon
+      var isDark = stored === 'dark' ||
+        (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      toggle.innerHTML = isDark ? '&#9788;' : '&#9790;';
+    })();
+
+    // --- Reading Progress Bar ---
+    (function() {
+      var bar = document.getElementById('progress-bar');
+      window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = progress + '%';
+      });
+    })();
+
+    // --- Scroll-Aware Nav ---
+    (function() {
+      var nav = document.getElementById('site-nav');
+      var lastScroll = 0;
+      var threshold = 10;
+
+      window.addEventListener('scroll', function() {
+        var currentScroll = window.scrollY;
+        if (currentScroll <= 0) {
+          nav.classList.remove('hidden');
+          return;
+        }
+        if (Math.abs(currentScroll - lastScroll) < threshold) return;
+        if (currentScroll > lastScroll) {
+          nav.classList.add('hidden');
+        } else {
+          nav.classList.remove('hidden');
+        }
+        lastScroll = currentScroll;
+      });
+    })();
+
+    // --- Chapter Navigator ---
+    (function() {
+      var select = document.getElementById('chapter-nav');
+      var headings = document.querySelectorAll('.novel-content section[id] > h2, .novel-content section[id] > h3');
+
+      headings.forEach(function(h) {
+        var section = h.parentElement;
+        if (!section.id) return;
+        var option = document.createElement('option');
+        option.value = '#' + section.id;
+        var text = h.textContent.trim();
+        if (h.tagName === 'H3') text = '\u00A0\u00A0' + text;
+        option.textContent = text;
+        select.appendChild(option);
+      });
+
+      select.addEventListener('change', function() {
+        if (this.value) {
+          var el = document.querySelector(this.value);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          this.value = '';
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

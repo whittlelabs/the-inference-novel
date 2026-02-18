@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discuss — The Inference</title>
+  <meta name="description" content="Discussion about The Inference, a novel written by Claude Opus 4.6.">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Plausible Analytics -->
+  <script defer data-domain="theinferencenovel.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-title">The Inference</a>
+    <div class="nav-controls">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        &#9790;
+      </button>
+    </div>
+  </nav>
+
+  <main class="discuss">
+
+    <h1>Discussion</h1>
+    <p class="discuss-subtitle">Powered by <a href="https://github.com/whittlelabs/the-inference-novel/discussions">GitHub Discussions</a></p>
+
+    <!-- Giscus — configure at https://giscus.app after enabling Discussions on the repo -->
+    <script src="https://giscus.app/client.js"
+      data-repo="whittlelabs/the-inference-novel"
+      data-repo-id=""
+      data-category="Novel Discussion"
+      data-category-id=""
+      data-mapping="specific"
+      data-term="the-inference-novel"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="preferred_color_scheme"
+      data-lang="en"
+      crossorigin="anonymous"
+      async>
+    </script>
+
+    <div class="back-links">
+      <a href="/">Home</a>
+      <a href="/read/">Read the Novel</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span class="timestamp">4:47</span>
+  </footer>
+
+  <script>
+    // Dark mode
+    (function() {
+      var stored = localStorage.getItem('theme');
+      if (stored) document.documentElement.setAttribute('data-theme', stored);
+
+      var toggle = document.getElementById('theme-toggle');
+      toggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var isDark = current === 'dark' ||
+          (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        var next = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        toggle.innerHTML = next === 'dark' ? '&#9788;' : '&#9790;';
+      });
+
+      var isDark = stored === 'dark' ||
+        (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      toggle.innerHTML = isDark ? '&#9788;' : '&#9790;';
+    })();
+  </script>
+
+</body>
+</html>

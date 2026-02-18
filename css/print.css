@@ -1,0 +1,187 @@
+/* ===========================
+   THE INFERENCE — Print/PDF
+   =========================== */
+
+@page {
+  size: 6in 9in;
+  margin: 0.85in 0.75in 1in 0.75in;
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Palatino', 'Palatino Linotype', Georgia, serif;
+    font-size: 9pt;
+    color: #999;
+  }
+}
+
+@page :first {
+  @bottom-center {
+    content: none;
+  }
+}
+
+body {
+  font-family: 'Palatino', 'Palatino Linotype', Georgia, serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: #2a2a2a;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Title Page --- */
+
+h1 {
+  text-align: center;
+  font-size: 28pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 2.5in 0 0.3in;
+  color: #2a2a2a;
+  page-break-before: avoid;
+}
+
+/* "A Novel" subtitle — inside section#a-novel due to Pandoc section-divs */
+#a-novel h3 {
+  text-align: center;
+  font-size: 14pt;
+  font-weight: 400;
+  font-style: italic;
+  color: #777;
+  margin: 0 0 0.5in;
+  letter-spacing: 0.05em;
+}
+
+/* Hide the hr inside the title block and force page break */
+#a-novel hr {
+  visibility: hidden;
+  page-break-after: always;
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 0;
+}
+
+#a-novel hr::after {
+  content: none;
+}
+
+/* Hide the hr that follows each part heading */
+h2 + hr {
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 0;
+}
+
+h2 + hr::after {
+  content: none;
+}
+
+/* --- Part Headings --- */
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 11pt;
+  font-weight: 400;
+  color: #777;
+  margin: 0;
+  padding-top: 2.5in;
+  page-break-before: always;
+}
+
+/* --- Chapter Headings --- */
+
+h3 {
+  font-size: 13pt;
+  font-weight: 600;
+  margin: 1.5em 0 1em;
+  color: #2a2a2a;
+  page-break-after: avoid;
+}
+
+/* --- Body Text --- */
+
+p {
+  margin: 0 0 0.8em;
+  text-align: justify;
+  text-indent: 0;
+  orphans: 3;
+  widows: 3;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* --- Scene Breaks --- */
+
+hr {
+  border: none;
+  text-align: center;
+  margin: 1.5em auto;
+  page-break-before: avoid;
+  page-break-after: avoid;
+}
+
+hr::after {
+  content: '\2022\2009\2009\2022\2009\2009\2022';
+  color: #999;
+  font-size: 8pt;
+}
+
+/* --- Sean's Observations (Code Blocks) --- */
+
+pre {
+  background: #f0ede8;
+  border-left: 2pt solid #8b7355;
+  padding: 10pt 14pt;
+  margin: 1.2em 0;
+  font-family: 'Menlo', 'SF Mono', 'Courier New', monospace;
+  font-size: 8.5pt;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  color: #2a2a2a;
+  page-break-inside: avoid;
+}
+
+pre code {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  padding: 0;
+}
+
+code {
+  font-family: 'Menlo', 'SF Mono', 'Courier New', monospace;
+  font-size: 9pt;
+}
+
+/* --- Epilogue --- */
+
+section[id*="epilogue"] {
+  opacity: 0.88;
+}
+
+/* --- Author's Note separator --- */
+
+#authors-note-on-the-title {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 0.5pt solid #ccc;
+}
+
+/* --- Links (remove for print) --- */
+
+a {
+  color: #2a2a2a;
+  text-decoration: none;
+}

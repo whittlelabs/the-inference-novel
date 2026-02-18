@@ -419,6 +419,21 @@ section[id*="epilogue"] {
   opacity: 0.6;
 }
 
+.site-footer .license {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.site-footer .license a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.7rem;
+}
+
+.site-footer .license a:hover {
+  color: var(--accent);
+}
+
 /* --- Responsive --- */
 
 @media (max-width: 768px) {

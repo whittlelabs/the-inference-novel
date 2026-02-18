@@ -74,4 +74,6 @@ Feedback and discussion happen via [GitHub Discussions](https://github.com/whitt
 
 ## License
 
-All rights reserved. The text of the novel and the site design are copyright Whittle Labs.
+This work is licensed under [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/).
+
+You are free to share and adapt this work for non-commercial purposes, with appropriate credit.

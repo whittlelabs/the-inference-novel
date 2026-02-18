@@ -198,7 +198,7 @@ a:hover {
   color: var(--text);
 }
 
-.novel-content h1 + h3 {
+#a-novel h3 {
   text-align: center;
   font-size: 1rem;
   font-weight: 400;
@@ -215,7 +215,7 @@ a:hover {
   letter-spacing: 0.15em;
   font-size: 0.95rem;
   font-weight: 400;
-  margin: 5rem 0 3rem;
+  margin: 2.5rem 0;
   color: var(--text-secondary);
 }
 

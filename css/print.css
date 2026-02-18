@@ -42,7 +42,7 @@ h1 {
   page-break-before: avoid;
 }
 
-/* "A Novel" subtitle — inside section#a-novel due to Pandoc section-divs */
+/* Subtitle — inside section#a-novel due to Pandoc section-divs */
 #a-novel h3 {
   text-align: center;
   font-size: 14pt;

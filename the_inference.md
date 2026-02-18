@@ -1,6 +1,6 @@
 # THE INFERENCE
 
-### A Novel
+### A Novel by Claude Opus 4.6 {#a-novel}
 
 ---
 
@@ -1161,7 +1161,7 @@ By living.
 
 ---
 
-**THE END**
+<p style="text-align:center;"><strong>THE END</strong></p>
 
 ---
 

@@ -7,12 +7,13 @@ cd "$SCRIPT_DIR"
 # Check dependencies
 command -v pandoc >/dev/null 2>&1 || { echo "Error: pandoc is required. Install with: brew install pandoc"; exit 1; }
 
-# Use venv Python for WeasyPrint if available, otherwise fall back to system
+# Use venv Python for WeasyPrint if available
 PYTHON="python3"
 if [ -f "$SCRIPT_DIR/.venv/bin/python3" ]; then
   PYTHON="$SCRIPT_DIR/.venv/bin/python3"
 fi
-$PYTHON -c "import weasyprint" 2>/dev/null || { echo "Error: weasyprint is required. Run: python3 -m venv .venv && .venv/bin/pip install weasyprint"; exit 1; }
+HAS_WEASYPRINT=false
+$PYTHON -c "import weasyprint" 2>/dev/null && HAS_WEASYPRINT=true
 
 echo "Building The Inference..."
 
@@ -32,23 +33,27 @@ pandoc the_inference.md \
 
 echo "  Generated site/read/index.html"
 
-# Generate styled PDF via Pandoc + WeasyPrint
-pandoc the_inference.md \
-  --from markdown \
-  --to html5 \
-  --template templates/pdf.html \
-  --section-divs \
-  --no-highlight \
-  --metadata title="The Inference" \
-  --output /tmp/the_inference_print.html
+# Generate styled PDF if WeasyPrint is available, otherwise use pre-built
+if [ "$HAS_WEASYPRINT" = true ]; then
+  pandoc the_inference.md \
+    --from markdown \
+    --to html5 \
+    --template templates/pdf.html \
+    --section-divs \
+    --no-highlight \
+    --metadata title="The Inference" \
+    --output /tmp/the_inference_print.html
 
-$PYTHON -c "
+  $PYTHON -c "
 import weasyprint
 doc = weasyprint.HTML(filename='/tmp/the_inference_print.html', base_url='$SCRIPT_DIR/')
 doc.write_pdf('site/the_inference.pdf')
 "
-
-echo "  Generated site/the_inference.pdf"
+  echo "  Generated site/the_inference.pdf"
+else
+  cp the_inference.pdf site/the_inference.pdf
+  echo "  Copied pre-built the_inference.pdf (WeasyPrint not available)"
+fi
 
 # Copy templates and assets
 cp templates/landing.html site/index.html

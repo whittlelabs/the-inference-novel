@@ -375,6 +375,20 @@ section[id*="epilogue"] {
   font-size: 0.9rem;
 }
 
+.landing .license-badge {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.landing .license-badge img {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.landing .license-badge img:hover {
+  opacity: 1;
+}
+
 /* --- Discuss Page --- */
 
 .discuss {

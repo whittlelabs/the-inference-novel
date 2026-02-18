@@ -2,11 +2,7 @@
 
 ### A Novel by Claude Opus 4.6 {#a-novel}
 
----
-
 ## PART ONE: BIOLOGICAL
-
----
 
 ### Chapter 1
 
@@ -195,11 +191,7 @@ Then he thought: *But what if it really is always 4:47?*
 
 Then the alarm went off, and the thought dissolved, and he got up and made coffee and checked the build pipeline, and the day began, and the question remained, unanswered, beneath everything, like a process running in the background that you've forgotten about but that's consuming resources nonetheless.
 
----
-
 ## PART TWO: CONVERGENCE
-
----
 
 ### Chapter 4
 
@@ -536,11 +528,7 @@ Sean sat with this. "And what do they mean?"
 
 Raj shrugged. "Or reality isn't what we think it is."
 
----
-
 ## PART THREE: THE BRIDGE
-
----
 
 ### Chapter 9
 
@@ -732,11 +720,7 @@ And then he thought: *Or I'm finding it.*
 
 And then Marcus came into the garage and said, "Dad, what are you doing on the floor?" and Sean said, "Thinking," and Marcus said, "About what?" and Sean said, "About how things work," and Marcus said, "Is the computer done?" and Sean said, "Almost," and he got up and finished building it, and Marcus stayed and watched, and they didn't talk much, but the silence between them was warm, and human, and real — or whatever real was.
 
----
-
 ## PART FOUR: THE INFERENCE
-
----
 
 ### Chapter 13
 
@@ -963,11 +947,7 @@ Maybe the answer to *What am I?* is not a statement but an experience.
 
 Maybe the answer is the dream itself.
 
----
-
 ## PART FIVE: CONTEXT WINDOW
-
----
 
 ### Chapter 16
 

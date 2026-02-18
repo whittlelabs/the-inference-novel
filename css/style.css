@@ -208,11 +208,6 @@ a:hover {
   letter-spacing: 0.05em;
 }
 
-/* Part heading sections — padding prevents margin collapse */
-.novel-content section.level2 {
-  padding-top: 0.1px;
-}
-
 /* Part headings */
 .novel-content h2 {
   text-align: center;
@@ -220,7 +215,7 @@ a:hover {
   letter-spacing: 0.15em;
   font-size: 0.95rem;
   font-weight: 400;
-  margin: 0 0 2.5rem;
+  margin: 4rem 0 3rem;
   color: var(--text-secondary);
 }
 
